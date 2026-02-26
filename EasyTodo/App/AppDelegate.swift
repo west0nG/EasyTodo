@@ -76,11 +76,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: - Accessibility
 
     private func requestAccessibilityIfNeeded() {
-        let trusted = AXIsProcessTrustedWithOptions(
-            [kAXTrustedCheckOptionPrompt.takeRetainedValue(): true] as CFDictionary
-        )
-        if !trusted {
-            print("Accessibility permission needed for global shortcut.")
+        // Check silently first — only prompt if not yet trusted
+        let isTrusted = AXIsProcessTrusted()
+        if !isTrusted {
+            // Prompt once
+            AXIsProcessTrustedWithOptions(
+                [kAXTrustedCheckOptionPrompt.takeRetainedValue(): true] as CFDictionary
+            )
         }
     }
 
