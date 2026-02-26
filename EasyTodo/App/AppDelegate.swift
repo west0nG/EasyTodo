@@ -28,6 +28,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         let hostingView = NSHostingView(rootView: inputView)
         panel = QuickInputPanel(contentView: hostingView)
+        panel?.onEscape = { [weak self] in
+            self?.dismissPanel()
+        }
     }
 
     private func dismissPanel() {
