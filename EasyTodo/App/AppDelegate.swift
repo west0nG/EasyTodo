@@ -76,13 +76,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: - Accessibility
 
     private func requestAccessibilityIfNeeded() {
-        // Check silently first — only prompt if not yet trusted
-        let isTrusted = AXIsProcessTrusted()
-        if !isTrusted {
-            // Prompt once
-            AXIsProcessTrustedWithOptions(
-                [kAXTrustedCheckOptionPrompt.takeRetainedValue(): true] as CFDictionary
-            )
+        if !AXIsProcessTrusted() {
+            // Log only — don't prompt every launch during development.
+            // The global shortcut (Control key) requires Accessibility permission.
+            // Users can grant it manually in System Settings → Privacy & Security → Accessibility.
+            print("⚠️ Accessibility not granted. Global shortcut won't work. Grant in System Settings → Privacy & Security → Accessibility.")
         }
     }
 
