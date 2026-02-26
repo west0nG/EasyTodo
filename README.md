@@ -19,15 +19,22 @@ A lightweight, native macOS todo app. Press **Control** to instantly capture a t
 
 ## Install
 
+### Direct Download
+
+1. Download [EasyTodo.zip](./EasyTodo.zip)
+2. Unzip and drag `EasyTodo.app` to `/Applications`
+3. Right-click the app → **Open** → click **Open** to confirm (required on first launch since the app is not notarized)
+4. Grant Accessibility permission when prompted — go to **System Settings → Privacy & Security → Accessibility** and enable EasyTodo. This is required for the global `Control` shortcut to work.
+
+### Build from Source
+
 ```bash
 git clone https://github.com/your-username/EasyTodo.git
 cd EasyTodo
 open EasyTodo.xcodeproj
 ```
 
-Build and run with `⌘R` in Xcode.
-
-> On first launch, macOS will prompt you to grant Accessibility permission in **System Settings → Privacy & Security → Accessibility**. This is required for the global shortcut to work.
+Build and run with `⌘R` in Xcode (requires macOS 14.0+ SDK).
 
 ## Usage
 
